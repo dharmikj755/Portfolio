@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dharmik Umeshkumar Jha — UAV Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --transition: 0.35s ease;
+}
+[data-theme="dark"] {
+  --bg: #0f0f12;
+  --surface: #16161c;
+  --surface2: #1e1e27;
+  --border: #2a2a38;
+  --border2: #333345;
+  --text: #e8e6f0;
+  --muted: #7c7a90;
+  --faint: #3d3d52;
+  --accent: #7b68ee;
+  --accent2: #5c8df5;
+  --gold: #d4a84b;
+  --green: #4caf8a;
+  --green-bg: #0e2820;
+  --amber: #e8a030;
+  --tag-bg: #1e1e27;
+  --tag-border: #2a2a38;
+  --tag-text: #9090aa;
+  --pill-pub-bg: #0e2820;
+  --pill-pub-color: #4caf8a;
+  --pill-pub-border: #1e4a38;
+  --pill-prep-bg: #2a1e0a;
+  --pill-prep-color: #e8a030;
+  --pill-prep-border: #5a3e10;
+}
+[data-theme="light"] {
+  --bg: #f4f2ed;
+  --surface: #ffffff;
+  --surface2: #f9f8f5;
+  --border: #e0ddd6;
+  --border2: #ccc9c0;
+  --text: #1a1814;
+  --muted: #7a7569;
+  --faint: #c8c5bc;
+  --accent: #4a3fc0;
+  --accent2: #1c42b8;
+  --gold: #9a6f10;
+  --green: #166040;
+  --green-bg: #eaf3ee;
+  --amber: #9a6200;
+  --tag-bg: #f0ede8;
+  --tag-border: #d8d4cc;
+  --tag-text: #6a665e;
+  --pill-pub-bg: #eaf3ee;
+  --pill-pub-color: #166040;
+  --pill-pub-border: #9fcfb8;
+  --pill-prep-bg: #fef6e8;
+  --pill-prep-color: #9a6200;
+  --pill-prep-border: #e8c97a;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.65;transition:background var(--transition),color var(--transition);-webkit-font-smoothing:antialiased;}
+
+/* ── TOP BAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid var(--border);background:var(--bg);transition:background var(--transition),border-color var(--transition);}
+.topbar-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;letter-spacing:0.02em;color:var(--text);}
+.topbar-right{display:flex;align-items:center;gap:1rem;}
+.theme-toggle{display:flex;align-items:center;gap:0.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:0.25rem 0.7rem;cursor:pointer;font-size:0.72rem;font-weight:500;color:var(--muted);transition:all 0.2s;letter-spacing:0.04em;}
+.theme-toggle:hover{color:var(--text);border-color:var(--border2);}
+.theme-icon{font-size:0.85rem;}
+
+/* ── HERO ── */
+.hero{padding:6rem 0 3rem;max-width:860px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem;}
+.hero-tag{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.2rem 0.7rem;border-radius:2px;margin-bottom:1.4rem;opacity:0;animation:fadeUp 0.5s ease 0.1s forwards;}
+.hero-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(3rem,6vw,5rem);line-height:0.95;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.5rem;opacity:0;animation:fadeUp 0.6s ease 0.2s forwards;}
+.hero-sub{font-size:0.85rem;color:var(--muted);margin-bottom:2.2rem;letter-spacing:0.02em;opacity:0;animation:fadeUp 0.6s ease 0.3s forwards;}
+.hero-divider{width:40px;height:2px;background:var(--accent);margin-bottom:1.8rem;opacity:0;animation:fadeUp 0.5s ease 0.35s forwards;}
+.hero-bio{font-size:0.98rem;line-height:1.9;color:var(--text);max-width:680px;margin-bottom:2rem;opacity:0;animation:fadeUp 0.6s ease 0.4s forwards;}
+.hero-bio em{font-style:italic;color:var(--muted);}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.4rem;opacity:0;animation:fadeUp 0.6s ease 0.48s forwards;}
+.chip{font-size:0.72rem;font-weight:500;padding:0.3rem 0.75rem;background:var(--surface);border:1px solid var(--border2);color:var(--muted);border-radius:2px;letter-spacing:0.02em;}
+.hero-links{display:flex;flex-wrap:wrap;gap:0.5rem;opacity:0;animation:fadeUp 0.6s ease 0.55s forwards;}
+.hero-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.76rem;font-weight:500;padding:0.45rem 1.1rem;text-decoration:none;border-radius:2px;transition:all 0.15s;letter-spacing:0.03em;}
+.hero-link-primary{background:var(--accent);color:#fff;}
+.hero-link-primary:hover{opacity:0.85;}
+.hero-link-ghost{background:transparent;color:var(--text);border:1px solid var(--border2);}
+.hero-link-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── STATS ── */
+.stats-row{max-width:860px;margin:0 auto 0;padding:0 2.5rem 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);opacity:0;animation:fadeUp 0.6s ease 0.65s forwards;}
+.stat{background:var(--surface);padding:1.2rem 1.1rem;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2rem;color:var(--text);line-height:1;margin-bottom:0.25rem;}
+.stat-label{font-size:0.68rem;color:var(--muted);line-height:1.5;}
+
+/* ── TABS ── */
+.tabs-container{max-width:860px;margin:0 auto;padding:0 2.5rem 6rem;}
+.tab-nav{display:flex;border-bottom:1px solid var(--border);margin-bottom:2.5rem;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.75rem 1.3rem;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--muted);white-space:nowrap;transition:all 0.15s;margin-bottom:-1px;flex-shrink:0;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab-panel{display:none !important;}
+.tab-panel.active{display:block !important;}
+
+
+.skill-wide{grid-column:1/-1;}
+/* ── SECTION HEADING ── */
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:var(--text);margin-bottom:1.8rem;display:flex;align-items:center;gap:0.9rem;}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:1.8rem 0;border-bottom:1px solid var(--border);}
+.exp-item:last-child{border-bottom:none;padding-bottom:0;}
+.exp-item:first-child{padding-top:0;}
+.exp-meta{padding-top:0.15rem;}
+.exp-period{font-size:0.72rem;color:var(--muted);margin-bottom:0.45rem;line-height:1.5;}
+.exp-badge{display:inline-block;font-size:0.62rem;font-weight:600;padding:0.15rem 0.5rem;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:2px;}
+.exp-role{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:0.2rem;line-height:1.2;}
+.exp-org{font-size:0.76rem;color:var(--accent2);font-weight:500;margin-bottom:0.9rem;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.exp-bullets li{font-size:0.84rem;color:var(--text);line-height:1.7;padding-left:1rem;position:relative;}
+.exp-bullets li::before{content:'';position:absolute;left:0;top:0.65em;width:4px;height:1px;background:var(--muted);}
+.tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.9rem;}
+.tag{font-size:0.66rem;padding:0.16rem 0.55rem;background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--tag-text);border-radius:2px;}
+
+/* ── RESEARCH ── */
+.pub-group{margin-bottom:2rem;}
+.pub-type-label{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;}
+.research-card{background:var(--surface);border:1px solid var(--border);padding:1.6rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;}
+.research-conf{font-size:0.73rem;color:var(--muted);margin-bottom:0.5rem;line-height:1.55;}
+.research-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:0.7rem;line-height:1.35;}
+.research-desc{font-size:0.84rem;color:var(--text);line-height:1.75;}
+.pub-pill{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.7rem;white-space:nowrap;border-radius:2px;}
+.pub-pill.published{background:var(--pill-pub-bg);color:var(--pill-pub-color);border:1px solid var(--pill-pub-border);}
+.pub-pill.prep{background:var(--pill-prep-bg);color:var(--pill-prep-color);border:1px solid var(--pill-prep-border);}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.project-card{background:var(--surface);overflow:hidden;transition:background 0.15s,box-shadow 0.2s;}
+.project-card:hover{background:var(--surface2);box-shadow:0 4px 20px rgba(0,0,0,0.12);}
+.proj-photo{overflow:hidden;width:100%;height:180px;background:var(--surface2);position:relative;}
+.proj-icon{font-size:1.4rem;opacity:0.25;}
+.proj-content{padding:1.1rem 1.3rem 1.3rem;}.proj-event{font-size:0.68rem;color:var(--muted);margin-bottom:0.3rem;}
+.proj-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:0.55rem;line-height:1.25;}
+.proj-desc{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+.proj-view-btn{display:inline-flex;align-items:center;gap:0.35rem;margin-top:0.9rem;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:none;border:none;border-bottom:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;padding:0;transition:all 0.15s;}
+.proj-view-btn:hover{border-bottom-color:var(--accent);}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.skill-group{background:var(--surface);padding:1.3rem 1.4rem;}
+.skill-group-title{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.skill-list{display:flex;flex-wrap:wrap;gap:0.3rem;}
+.skill-pill{font-size:0.74rem;color:var(--text);background:var(--surface2);border:1px solid var(--border2);padding:0.2rem 0.55rem;border-radius:2px;}
+
+/* ── AWARDS ── */
+.awards-list{display:flex;flex-direction:column;border:1px solid var(--border);gap:0;}
+.award-row{background:var(--surface);padding:1.1rem 1.5rem;display:grid;grid-template-columns:48px 1fr;gap:1.3rem;align-items:center;border-bottom:1px solid var(--border);transition:background 0.12s;}
+.award-row:last-child{border-bottom:none;}
+.award-row:hover{background:var(--surface2);}
+.award-pos{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.5rem;text-align:center;line-height:1;}
+.award-pos.gold{color:var(--gold);}
+.award-pos.silver{color:var(--muted);}
+.award-pos.blue{color:var(--accent2);}
+.award-title{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:0.18rem;}
+.award-detail{font-size:0.73rem;color:var(--muted);line-height:1.5;}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.edu-card{background:var(--surface);padding:1.6rem;}
+.edu-years{font-size:0.7rem;font-weight:600;color:var(--accent2);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:0.55rem;}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.05rem;color:var(--text);margin-bottom:0.28rem;line-height:1.25;}
+.edu-school{font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:0.4rem;}
+.edu-gpa{font-size:0.74rem;font-weight:600;color:var(--green);}
+.edu-sep{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--border);}
+.edu-courses{font-size:0.71rem;color:var(--muted);margin-top:0.75rem;line-height:1.65;padding-top:0.75rem;border-top:1px solid var(--border);}
+
+/* ── CONTACT ── */
+.contact-wrap{max-width:520px;}
+.contact-heading{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.5rem,2.5vw,2rem);color:var(--text);line-height:1.15;margin-bottom:0.7rem;}
+.contact-sub{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem;}
+.contact-links{display:flex;flex-direction:column;gap:0.35rem;}
+.contact-link{display:flex;align-items:center;gap:0.9rem;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border);text-decoration:none;color:var(--text);font-size:0.82rem;transition:border-color 0.15s;}
+.contact-link:hover{border-color:var(--accent);}
+.link-type{font-size:0.64rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);min-width:52px;}
+.refs-block{margin-top:1.2rem;padding:1.2rem;background:var(--surface);border:1px solid var(--border);}
+.refs-title{font-size:0.64rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.9rem;padding-bottom:0.55rem;border-bottom:1px solid var(--border);}
+.refs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ref-name{font-size:0.8rem;font-weight:600;color:var(--text);margin-bottom:0.22rem;}
+.ref-detail{font-size:0.71rem;color:var(--muted);line-height:1.6;}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);display:none;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.modal-overlay.open{display:block;opacity:1;pointer-events:all;}
+.modal{position:fixed;top:0;right:0;bottom:0;z-index:600;width:min(700px,100vw);background:var(--surface);overflow-y:auto;display:none;border-left:1px solid var(--border2);opacity:0;transform:translateX(48px);transition:opacity 0.38s cubic-bezier(0.22,1,0.36,1),transform 0.38s cubic-bezier(0.22,1,0.36,1);}
+.modal.open{display:block;opacity:1;transform:translateX(0);}
+.modal-header{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--border);padding:0.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;}
+.modal-header-label{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.modal-close{width:30px;height:30px;background:none;border:1px solid var(--border2);cursor:pointer;font-size:1rem;color:var(--text);display:flex;align-items:center;justify-content:center;border-radius:2px;transition:all 0.15s;}
+.modal-close:hover{background:var(--surface2);}
+.modal-body{padding:1.8rem 1.6rem 3rem;}
+.modal-event{font-size:0.7rem;color:var(--muted);margin-bottom:0.45rem;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--text);line-height:1.2;margin-bottom:1.6rem;}
+.modal-video{width:100%;aspect-ratio:16/9;background:var(--surface2);border:1px solid var(--border);margin-bottom:1.4rem;position:relative;overflow:hidden;}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.modal-video-icon{font-size:2rem;opacity:0.2;}
+.modal-video-hint{font-size:0.66rem;color:var(--faint);line-height:1.5;padding:0 2rem;text-align:center;}
+.modal-photos{display:flex;gap:0.5rem;margin-bottom:1.5rem;}
+.modal-photo-slot{flex:1;min-width:0;background:var(--surface2);border:1px solid var(--border);overflow:hidden;aspect-ratio:4/3;}
+.modal-photo-slot img{width:100%;height:100%;object-fit:cover;}
+.modal-section{margin-bottom:2rem;padding-bottom:0;}
+.modal-section-title{font-size:0.63rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.modal-desc{font-size:0.86rem;line-height:1.85;color:var(--text);margin-top:0;}
+.modal-desc+.modal-desc{margin-top:0.85rem;}
+.specs-table{width:100%;border:1px solid var(--border);border-collapse:collapse;}
+.specs-table tr{border-bottom:1px solid var(--border);}
+.specs-table tr:last-child{border-bottom:none;}
+.specs-table td{padding:0.6rem 1rem;font-size:0.82rem;vertical-align:top;line-height:1.55;}
+.specs-table td:first-child{font-weight:600;color:var(--muted);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;width:36%;background:var(--surface2);border-right:1px solid var(--border);white-space:nowrap;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.on{opacity:1;transform:none;}
+
+@media(max-width:700px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .projects-grid,.skills-grid,.edu-grid{grid-template-columns:1fr;}
+  .exp-item{grid-template-columns:1fr;gap:0.5rem;}
+  .research-card{grid-template-columns:1fr;}
+  .refs-grid{grid-template-columns:1fr;}
+  .tab-btn{padding:0.7rem 0.9rem;}
+}
+
+/* ── HERO PHOTO ── */
+.hero-content-row{display:grid;grid-template-columns:1fr 180px;gap:2.5rem;align-items:start;}
+.hero-bio-col{}
+.hero-photo-col{padding-top:0.3rem;}
+.hero-photo-slot{width:180px;height:220px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-photo-slot img{width:100%;height:100%;object-fit:cover;}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;padding:1rem;text-align:center;width:100%;height:100%;}
+.photo-icon{font-size:2rem;opacity:0.15;}
+.photo-hint{font-size:0.68rem;font-weight:500;color:var(--muted);}
+.photo-hint-sub{font-size:0.6rem;color:var(--faint);line-height:1.5;}
+
+/* ── GALLERY ── */
+.gallery-intro{font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:4px;}
+.gallery-item{position:relative;overflow:hidden;}
+.gallery-item.large{grid-column:span 2;grid-row:span 2;}
+.gallery-item.video-slot{grid-column:span 2;}
+.gallery-slot{width:100%;height:100%;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;transition:background 0.15s;cursor:pointer;position:relative;overflow:hidden;}
+.gallery-slot:hover{background:var(--surface2);}
+.gallery-slot img,.gallery-slot iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;}
+.gallery-video-placeholder{border:1px dashed var(--border2);}
+.gallery-icon{font-size:1.5rem;opacity:0.18;}
+.gallery-hint{font-size:0.64rem;color:var(--faint);text-align:center;padding:0 1rem;line-height:1.5;}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);color:#fff;font-size:0.66rem;padding:0.3rem 0.6rem;opacity:0;transition:opacity 0.2s;pointer-events:none;}
+.gallery-item:hover .gallery-caption{opacity:1;}
+
+@media(max-width:700px){
+  .hero-content-row{grid-template-columns:1fr;}
+  .hero-photo-col{display:none;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gallery-item.large{grid-column:span 2;}
+  .gallery-item.video-slot{grid-column:span 2;}
+}
+
+.exp-project-link{margin-top:0.9rem;}
+.exp-proj-btn{font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.06em;color:var(--accent);background:var(--surface);border:1px solid var(--border2);padding:0.4rem 0.85rem;cursor:pointer;transition:all 0.15s;border-radius:2px;}
+.exp-proj-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+.tab-scroll-hint{display:none;align-items:center;gap:0.35rem;font-size:0.65rem;color:var(--muted);margin-top:-1.8rem;margin-bottom:1.4rem;justify-content:flex-end;letter-spacing:0.04em;}
+.scroll-hint-arrow{font-size:0.8rem;animation:nudge 1.4s ease-in-out infinite;}
+@keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
+@media(max-width:700px){
+  .tab-scroll-hint{display:flex;}
+}
+
+/* ── MILESTONE CARDS ── */
+.milestone-row{display:flex;align-items:stretch;gap:0;margin-bottom:2rem;}
+.ms-card{flex:1;padding:1.2rem 0.9rem;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform 0.18s ease,box-shadow 0.18s ease,border-color 0.18s ease;min-width:0;}
+.ms-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.1);border-color:var(--border2);}
+.ms-c1{border-top:3px solid rgba(92,141,245,0.7);}
+.ms-c1b{border-top:3px solid rgba(92,141,245,0.45);}
+.ms-c2{border-top:3px solid rgba(160,130,240,0.8);}
+.ms-c3{border-top:3px solid var(--accent);}
+.ms-c4{border-top:3px solid rgba(80,200,160,0.8);}
+.ms-c1 .ms-icon{color:rgba(92,141,245,1);}
+.ms-c1b .ms-icon{color:rgba(92,141,245,0.7);}
+.ms-c2 .ms-icon{color:rgba(160,130,240,1);}
+.ms-c3 .ms-icon{color:var(--accent);}
+.ms-c4 .ms-icon{color:rgba(80,200,160,1);}
+.ms-icon{opacity:0.7;margin-bottom:0.55rem;}
+.ms-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:var(--text);line-height:1.1;}
+.ms-sub{font-size:0.7rem;color:var(--muted);margin-top:0.18rem;}
+.ms-year{font-size:0.6rem;font-weight:500;letter-spacing:0.06em;color:var(--faint);margin-top:0.4rem;}
+.ms-badge{font-size:0.62rem;font-weight:600;color:var(--gold);margin-top:0.35rem;letter-spacing:0.02em;}
+/* compact exp */
+.exp-note{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-top:0.2rem;}
+@media(max-width:700px){
+  .milestone-row{flex-direction:column;align-items:stretch;}
+}
+
+
+.modal-photo-main{margin-bottom:1.5rem;}.modal-photo-main .modal-photo-slot{height:260px;width:100%;}
+
+.proj-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.project-card:hover .proj-photo img{transform:scale(1.04);}
+.proj-photo-overlay{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 100%);pointer-events:none;}
+
+/* ── SKILLS REDESIGN ── */
+.sk-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px;}
+.sk-block{background:var(--surface);padding:1.6rem 1.8rem;}
+.sk-primary{}
+.sk-block-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.1rem;color:var(--accent);}
+.sk-block-header span{font-size:0.63rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;}
+.sk-tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem 1rem;}
+.sk-tool-item{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text);}
+.sk-tool-item svg{color:var(--accent);opacity:0.7;flex-shrink:0;}
+.sk-tool-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.55;flex-shrink:0;}
+.sk-courses{background:var(--surface);border:1px solid var(--border);padding:1.1rem 1.8rem;display:flex;align-items:center;gap:1.4rem;margin-top:0;}
+.sk-courses-label{font-size:0.6rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--accent);white-space:nowrap;min-width:80px;}
+.sk-courses-list{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem 0;font-size:0.8rem;color:var(--muted);}
+.sk-dot-sep{color:var(--border2);padding:0 0.4rem;}
+@media(max-width:700px){.sk-row{grid-template-columns:1fr;}.sk-courses{flex-direction:column;align-items:flex-start;gap:0.7rem;}}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-name">Dharmik Umeshkumar Jha</div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+      <span class="theme-icon" id="themeIcon">&#9788;</span>
+      <span id="themeLabel">Light</span>
+    </button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Mechanical Engineering &nbsp;&middot;&nbsp; UAV Design &nbsp;&middot;&nbsp; Aerodynamics</div>
+  <h1 class="hero-name">Dharmik<br/>Umeshkumar Jha</h1>
+  <p class="hero-sub">B.Tech Mechanical Engineering, Nirma University &nbsp;&middot;&nbsp; Captain, SAE Team Arrow</p>
+  <div class="hero-divider"></div>
+  <div class="hero-content-row">
+    <div class="hero-bio-col">
+      <p class="hero-bio">I&rsquo;m a Mechanical Engineering student at Nirma University who enjoys turning ideas into real, working machines. My interests lie in design, aerodynamics, and lightweight structures, and I&rsquo;m particularly drawn to building systems where analysis, creativity, and hands-on experimentation come together. Much of my work has been around UAVs&mdash;from concept and simulation to fabrication and flight testing&mdash;but at the core, I&rsquo;m motivated by the broader challenge of designing efficient and reliable mechanical systems.</p>
+    </div><!-- /hero-bio-col -->
+    <div class="hero-photo-col">
+      <div class="hero-photo-slot" id="heroPhotoSlot">
+        <img src="images/start-pic.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
+      </div>
+    </div>
+  </div><!-- /hero-content-row -->
+  <div class="hero-chips">
+    <span class="chip">Ahmedabad, Gujarat, India</span>
+    <span class="chip">B.Tech Mechanical Engineering &middot; 2023&ndash;2027</span>
+    <span class="chip"><a href="https://teamarrow.in" target="_blank" style="color:inherit;text-decoration:none;">teamarrow.in &#8599;</a></span>
+  </div>
+  <div class="hero-links">
+    <a class="hero-link hero-link-primary" href="#tabs" onclick="activateTab('contact')">Get in Touch</a>
+    <a class="hero-link hero-link-ghost" href="#tabs" onclick="activateTab('projects')">View Projects</a>
+    <a class="hero-link hero-link-ghost" href="https://www.linkedin.com/in/dharmik-jha" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a class="hero-link hero-link-ghost" href="Dharmik-resume.pdf" target="_blank" download>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      Resume PDF
+    </a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat"><div class="stat-num">1st</div><div class="stat-label">Overall &middot; SAE DDC 2025<br/>100+ Teams</div></div>
+  <div class="stat"><div class="stat-num">11th</div><div class="stat-label">International &middot; Aero Design West<br/>75 Teams, California</div></div>
+  <div class="stat"><div class="stat-num">5+</div><div class="stat-label">UAV Designs Built<br/>&amp; Flight Tested</div></div>
+  <div class="stat"><div class="stat-num">8.49</div><div class="stat-label">GPA / 10.0<br/>Nirma University</div></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-container" id="tabs">
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" onclick="activateTab('education')" data-tab="education">Education</button>
+    <button class="tab-btn" onclick="activateTab('experience')" data-tab="experience">Experience</button>
+    <button class="tab-btn" onclick="activateTab('projects')" data-tab="projects">Projects</button>
+    <button class="tab-btn" onclick="activateTab('research')" data-tab="research">Publications</button>
+    <button class="tab-btn" onclick="activateTab('skills')" data-tab="skills">Skills</button>
+    <button class="tab-btn" onclick="activateTab('awards')" data-tab="awards">Awards</button>
+    <button class="tab-btn" onclick="activateTab('gallery')" data-tab="gallery">Gallery</button>
+    <button class="tab-btn" onclick="activateTab('contact')" data-tab="contact">Contact</button>
+  </nav>
+
+  <!-- EDUCATION -->
+  <div class="tab-panel active" id="panel-education">
+    <h2 class="sec-title">Education</h2>
+    <div class="edu-grid fade-in">
+      <div class="edu-card">
+        <div class="edu-years">2023 &ndash; 2027</div>
+        <div class="edu-degree">B.Tech &mdash; Mechanical Engineering</div>
+        <div class="edu-school">Minor: Data Science<br/>Nirma University, Institute of Technology<br/>Ahmedabad, Gujarat, India</div>
+        <div class="edu-gpa">GPA: 8.49 / 10.0</div>
+        <div class="edu-courses">Machine Design &middot; FEA &middot; Aerodynamics &middot; Automation &amp; Control &middot; Manufacturing &middot; Statistics &middot; ML Basics</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-years">May 2023</div>
+        <div class="edu-degree">Higher Secondary Certificate &mdash; Class XII</div>
+        <div class="edu-school">Hillwoods School, Gandhinagar, Gujarat, India</div>
+        <div class="edu-gpa">84.8%</div>
+        <div class="edu-sep">
+          <div class="edu-years">Secondary School Certificate &mdash; Class X</div>
+          <div class="edu-gpa" style="margin-top:0.3rem;">90.0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="tab-panel" id="panel-experience">
+    <h2 class="sec-title">Experience</h2>
+
+    <!-- MILESTONE CARDS -->
+    <div class="milestone-row fade-in">
+
+      <div class="ms-card ms-c1">
+        <div class="ms-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="ms-title">Core Member</div>
+        <div class="ms-sub">SAE Team Arrow</div>
+        <div class="ms-year">Oct 2023 &ndash; Mar 2026</div>
+      </div>
+
+      <div class="ms-card ms-c1b">
+        <div class="ms-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="ms-title">Junior Designer</div>
+        <div class="ms-sub">SAE DDC 2024</div>
+        <div class="ms-year">Oct 2023 &ndash; Sep 2024</div>
+      </div>
+
+      <div class="ms-card ms-c2">
+        <div class="ms-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="ms-title">Design Lead</div>
+        <div class="ms-sub">Aerothon 2025</div>
+        <div class="ms-year">Apr &ndash; Aug 2025</div>
+      </div>
+
+      <div class="ms-card ms-c3">
+        <div class="ms-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="ms-title">Captain</div>
+        <div class="ms-sub">SAE DDC 2025</div>
+        <div class="ms-year">Oct 2024 &ndash; Mar 2025</div>
+      </div>
+
+      <div class="ms-card ms-c4">
+        <div class="ms-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="ms-title">Captain</div>
+        <div class="ms-sub">SAE Aero East 2026</div>
+        <div class="ms-year">Sep 2025 &ndash; Mar 2026</div>
+      </div>
+
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Sep 2025 &ndash; Mar 2026</div>
+          <span class="exp-badge">Captain</span>
+        </div>
+        <div>
+          <div class="exp-role">SAE Aero Design East 2026</div>
+          <div class="exp-org">Team Arrow &middot; Advanced Class &middot; <a href="https://teamarrow.in" target="_blank" style="color:inherit;border-bottom:1px solid var(--border2);">teamarrow.in</a></div>
+          <p class="exp-note">Led design of a hybrid VTOL tricopter UAV from concept through fabrication and flight test, coordinating aerodynamics, propulsion, and controls sub-teams.</p>
+          <div class="exp-project-link"><button class="exp-proj-btn" onclick="activateTab('projects');setTimeout(function(){openModal('vtol')},350)">&#x2197; View Project: Hybrid VTOL Tricopter</button></div>
+          <div class="tags"><span class="tag">VTOL Design</span><span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">TBS Lucid H7</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Oct 2024 &ndash; Mar 2025</div>
+          <span class="exp-badge">Captain</span>
+        </div>
+        <div>
+          <div class="exp-role">SAE DDC 2025 &mdash; Regular Category</div>
+          <div class="exp-org">Team Arrow &middot; <strong style="color:var(--green);">1st Overall, 100+ Teams</strong></div>
+          <p class="exp-note">Led the team to 1st Overall finish, overseeing the full aircraft design cycle from configuration and structural layout through competition execution.</p>
+          <div class="exp-project-link"><button class="exp-proj-btn" onclick="activateTab('projects');setTimeout(function(){openModal('regular')},350)">&#x2197; View Project: Regular Class Fixed-Wing UAV</button></div>
+          <div class="tags"><span class="tag">Fixed-Wing UAV</span><span class="tag">Structural Design</span><span class="tag">Subsystem Integration</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Oct 2023 &ndash; Sep 2024</div>
+          <span class="exp-badge">Junior Designer</span>
+        </div>
+        <div>
+          <div class="exp-role">SAE DDC 2024 &mdash; Regular Category</div>
+          <div class="exp-org">Team Arrow &middot; <strong style="color:var(--accent2);">4th Overall &middot; 2nd Best Design Report</strong></div>
+          <p class="exp-note">Contributed to the structural design and fabrication of the regular class fixed-wing UAV. Assisted in airframe layout, component sizing, and assembly — earning 4th Overall and 2nd Best Design Report at SRM University, Chennai.</p>
+          <div class="exp-project-link"><button class="exp-proj-btn" onclick="activateTab('projects');setTimeout(function(){openModal('regular')},350)">&#x2197; View Project: Regular Class Fixed-Wing UAV</button></div>
+          <div class="tags"><span class="tag">Fixed-Wing UAV</span><span class="tag">Structural Design</span><span class="tag">Fabrication</span><span class="tag">Aeroply</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Apr &ndash; Aug 2025</div>
+          <span class="exp-badge">Design Lead</span>
+        </div>
+        <div>
+          <div class="exp-role">Aerothon 2025</div>
+          <div class="exp-org">Team Arrow &middot; Disaster Response Multi-Rotor UAV</div>
+          <p class="exp-note">Led mechanical design of a sub-2 kg quadcopter including generative-design airframe, propulsion sizing, and subsystem integration.</p>
+          <div class="exp-project-link"><button class="exp-proj-btn" onclick="activateTab('projects');setTimeout(function(){openModal('quadrotor')},350)">&#x2197; View Project: Aerothon Quadcopter</button></div>
+          <div class="tags"><span class="tag">Quadrotor Design</span><span class="tag">Fusion 360</span><span class="tag">Generative Design</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Oct 2023 &ndash; Mar 2026</div>
+          <span class="exp-badge">Core Member</span>
+        </div>
+        <div>
+          <div class="exp-role">Team Arrow &mdash; Core Team</div>
+          <div class="exp-org">SAE Nirma Collegiate Club</div>
+          <p class="exp-note">CAD, structural sizing, and fabrication for competition UAVs. Competed internationally at <strong>SAE Aero Design West 2025</strong> (Micro Class, Van Nuys CA, 75 teams).</p>
+          <div class="exp-project-link"><button class="exp-proj-btn" onclick="activateTab('projects');setTimeout(function(){openModal('micro')},350)">&#x2197; View Project: Micro Class Fixed-Wing UAV</button></div>
+          <div class="tags"><span class="tag">CAD Modelling</span><span class="tag">Composite Fabrication</span><span class="tag">Flight Testing</span><span class="tag">XFLR5</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="tab-panel" id="panel-projects">
+    <h2 class="sec-title">Academic Projects</h2>
+        <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/adv-3d.jpeg',')" src="images/adv-3d.jpeg" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">SAE Aero Design East 2026 &middot; Advanced Class</div>
+          <div class="proj-title">Hybrid VTOL Tricopter UAV</div>
+          <p class="proj-desc">Lifting-body fuselage, T-Motor F80 Pro motors, TBS Lucid H7 Wing. ~800 mm wingspan, ~1.6 kg AUW. Vertical takeoff, transition, and fixed-wing cruise.</p>
+          <div class="tags"><span class="tag">VTOL</span><span class="tag">TBS Lucid H7</span><span class="tag">Balsa/Aeroply</span></div>
+          <button class="proj-view-btn" onclick="openModal('vtol')">View Details &#8594;</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/aerothon-1.png',')" src="images/aerothon-1.png" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">Aerothon 2025 &middot; UAV Competition</div>
+          <div class="proj-title">Aerothon Quadcopter</div>
+          <p class="proj-desc">X-frame, 440 mm wheelbase. 1300 KV BLDC motors, TWR ~4.58. Generative-designed single-piece frame in PET-G. Validated via ANSYS structural analysis.</p>
+          <div class="tags"><span class="tag">Generative Design</span><span class="tag">PET-G</span><span class="tag">ANSYS</span></div>
+          <button class="proj-view-btn" onclick="openModal('quadrotor')">View Details &#8594;</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/micro-photo.jpeg',')" src="images/micro-photo.jpeg" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">SAE Aero Design West 2025 &middot; Micro Class &middot; <strong style="color:var(--accent2);">11th / 75 Teams</strong></div>
+          <div class="proj-title">Micro Class Fixed-Wing UAV</div>
+          <p class="proj-desc">High-wing, semi-monocoque, 1.312 m span. 2 L liquid payload within 450 W limit. 11th overall, 75 international teams, Van Nuys CA.</p>
+          <div class="tags"><span class="tag">Fixed-Wing</span><span class="tag">450 W Limit</span><span class="tag">2 L Payload</span></div>
+          <button class="proj-view-btn" onclick="openModal('micro')">View Details &#8594;</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/regular-1.jpeg',')" src="images/regular-1.jpeg" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">SAE DDC 2024 &amp; 2025 &middot; Regular Class &middot; <strong style="color:var(--gold);">1st Overall 2025</strong></div>
+          <div class="proj-title">Regular Class Fixed-Wing UAV</div>
+          <p class="proj-desc">Balsa/aeroply, wingspan 1.68 m. 500 g airdrop, conventional tail. 1st Overall in 2025, 4th + 2nd Best Design Report in 2024.</p>
+          <div class="tags"><span class="tag">Balsa/Aeroply</span><span class="tag">500 g Airdrop</span><span class="tag">Conventional Tail</span></div>
+          <button class="proj-view-btn" onclick="openModal('regular')">View Details &#8594;</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/lg.png',')" src="images/lg.png" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">SAE DDC &middot; Structural Component</div>
+          <div class="proj-title">Primary Landing Gear &mdash; 10 kg UAV</div>
+          <p class="proj-desc">Carbon-fibre rods, CNC-machined aluminium clamps, expanding spring mechanism. 250 g final assembly at 10 kg gross aircraft weight.</p>
+          <div class="tags"><span class="tag">Carbon Fibre</span><span class="tag">CNC Aluminium</span><span class="tag">250 g Assembly</span></div>
+          <button class="proj-view-btn" onclick="openModal('gear')">View Details &#8594;</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="proj-photo">
+          <img onclick="openLightbox('images/tri-real.jpeg',')" src="images/tri-real.jpeg" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;"/>
+          <div class="proj-photo-overlay"></div>
+        </div>
+        <div class="proj-content">
+          <div class="proj-event">Internal Test Platform &middot; Mechanism Validation</div>
+          <div class="proj-title">Tricopter UAV Test Platform</div>
+          <p class="proj-desc">280 mm wheelbase MDF tricopter built to validate a servo-actuated rear motor tilt mechanism for yaw control. Rapid-fabricated using laser-cut interlocking tab-and-slot joints for iterative flight testing.</p>
+          <div class="tags"><span class="tag">Tricopter</span><span class="tag">Laser-cut MDF</span><span class="tag">Servo Tilt</span></div>
+          <button class="proj-view-btn" onclick="openModal('tricopter')">View Details &#8594;</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-research">
+    <h2 class="sec-title">Research Publications</h2>
+
+    <div class="pub-group fade-in">
+      <div class="pub-type-label">Conference Paper</div>
+      <div class="research-card">
+        <div>
+          <div class="research-conf">12th International &amp; 52nd National Conference on Fluid Mechanics and Fluid Power (FMFP 2025) &middot; Nirma University, Ahmedabad &middot; Presented at Conference</div>
+          <div class="research-title">Design Evolution and Aerodynamic Performance Assessment of a Micro-Class Fixed-Wing Unmanned Aerial Vehicle (UAV)</div>
+          <p class="research-desc"><strong>Jha, D.</strong> &mdash; Aerodynamic analysis performed using ANSYS Fluent and XFLR5. Presented at the 12th International &amp; 52nd National Conference on Fluid Mechanics and Fluid Power (FMFP 2025), Nirma University.</p>
+          <div class="tags" style="margin-top:1rem;"><span class="tag">ANSYS Fluent</span><span class="tag">XFLR5</span><span class="tag">Aerodynamic Analysis</span><span class="tag">Fixed-Wing UAV</span></div>
+        </div>
+        <span class="pub-pill published">Presented</span>
+      </div>
+    </div>
+
+    <div class="pub-group fade-in" style="margin-top:1.6rem;">
+      <div class="pub-type-label">Journal Manuscript</div>
+      <div class="research-card">
+        <div>
+          <div class="research-conf">Journal of Flow Visualization and Image Processing</div>
+          <div class="research-title">Aerodynamic Performance Assessment of High-Payload Fixed-Wing UAV</div>
+          <p class="research-desc"><strong>Jha, D.</strong> &mdash; Manuscript in preparation for submission to the Journal of Flow Visualization and Image Processing.</p>
+          <div class="tags" style="margin-top:1rem;"><span class="tag">High-Payload UAV</span><span class="tag">Aerodynamic Performance</span><span class="tag">Flow Visualization</span></div>
+        </div>
+        <span class="pub-pill prep">In Preparation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="tab-panel" id="panel-skills">
+    <h2 class="sec-title">Technical Skills</h2>
+
+    <div class="sk-row fade-in">
+      <div class="sk-block sk-primary">
+        <div class="sk-block-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span>Design &amp; Analysis</span>
+        </div>
+        <div class="sk-tools-grid">
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>CAD</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Generative Design</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Mechanism Design</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Structural Analysis</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Propulsion Sizing</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>UAV Design</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Aerostructures</span></span>
+        </div>
+      </div>
+      <div class="sk-block">
+        <div class="sk-block-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Manufacturing</span>
+        </div>
+        <div class="sk-tools-grid">
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>3D Printing</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Laser Cutting</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>CNC Machining</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Composite Structures</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Rapid Prototyping</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Assembly</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sk-row fade-in">
+      <div class="sk-block">
+        <div class="sk-block-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Software &amp; Tools</span>
+        </div>
+        <div class="sk-tools-grid">
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/><path d="M16 8l2-2"/></svg><span>Fusion 360</span></span>
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 17l4-10 4 10"/><line x1="9.5" y1="13" x2="14.5" y2="13"/></svg><span>ANSYS</span></span>
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7v10l9 5 9-5V7z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg><span>SolidWorks</span></span>
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="3 17 8 11 13 14 21 5"/><polyline points="3 17 3 21 7 21"/></svg><span>MATLAB</span></span>
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg><span>Mission Planner</span></span>
+          <span class="sk-tool-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17c3-6 6-9 9-9s6 3 9 9"/><line x1="3" y1="17" x2="21" y2="17"/></svg><span>XFLR5</span></span>
+        </div>
+      </div>
+      <div class="sk-block">
+        <div class="sk-block-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v4l3 3"/></svg>
+          <span>Flight Systems</span>
+        </div>
+        <div class="sk-tools-grid">
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>UAV Integration</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Flight Testing</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>PID Tuning</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Autopilot</span></span>
+          <span class="sk-tool-item"><span class="sk-tool-dot"></span><span>Telemetry</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sk-courses fade-in">
+      <div class="sk-courses-label">Coursework</div>
+      <div class="sk-courses-list">
+        <span>Aerodynamics</span><span class="sk-dot-sep">·</span>
+        <span>Fluid Mechanics</span><span class="sk-dot-sep">·</span>
+        <span>Thermodynamics</span><span class="sk-dot-sep">·</span>
+        <span>Machine Design</span><span class="sk-dot-sep">·</span>
+        <span>Dynamics</span><span class="sk-dot-sep">·</span>
+        <span>Materials Science</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AWARDS -->
+  <div class="tab-panel" id="panel-awards">
+    <h2 class="sec-title">Honours &amp; Awards</h2>
+    <div class="awards-list fade-in">
+      <div class="award-row"><div class="award-pos gold">1st</div><div><div class="award-title">1st Overall &mdash; Regular Class Category</div><div class="award-detail">SAEISS Drone Design Challenge 2025 &middot; Karpaga Vinayaga College of Engineering, Chennai &middot; March 2025</div></div></div>
+      <div class="award-row"><div class="award-pos blue">11th</div><div><div class="award-title">11th Overall &amp; 5th in Mission Score &mdash; SAE Aero Design West 2025, Micro Class</div><div class="award-detail">75 international teams &middot; Apollo XI RC Field, Van Nuys, California, USA &middot; April 2025</div></div></div>
+      <div class="award-row"><div class="award-pos silver">4th</div><div><div class="award-title">4th Overall &mdash; Regular Class Category</div><div class="award-detail">SAEISS Drone Design Challenge 2024 &middot; SRM University, Chennai &middot; September 2024</div></div></div>
+      <div class="award-row"><div class="award-pos silver">2nd</div><div><div class="award-title">2nd Best Design Report &mdash; Regular Class Category</div><div class="award-detail">SAEISS Drone Design Challenge 2024 &middot; SRM University, Chennai &middot; September 2024</div></div></div>
+      <div class="award-row"><div class="award-pos silver">4th</div><div><div class="award-title">4th Place &mdash; RC Aircraft Competition</div><div class="award-detail">Technoxian World Robotics Championship &middot; Noida Indoor Stadium, Noida, Delhi NCR &middot; August 2024</div></div></div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="tab-panel" id="panel-gallery">
+    <h2 class="sec-title">Gallery</h2>
+    <div class="gallery-grid fade-in">
+      <!-- Row 1: large featured + 2 stacked -->
+      <div class="gallery-item large" onclick="openLightbox('images/team.jpeg','Team Arrow')">
+        <div class="gallery-slot"><img src="images/team.jpeg" alt="Team Arrow" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Team Arrow</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/me-award.jpg','Receiving Award')">
+        <div class="gallery-slot"><img src="images/me-award.jpg" alt="Receiving Award" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Receiving Award</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/captain-pic.jpeg','Captain — Team Arrow')">
+        <div class="gallery-slot"><img src="images/captain-pic.jpeg" alt="Captain — Team Arrow" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Captain — Team Arrow</div>
+      </div>
+
+      <!-- Row 2: video wide + photo -->
+      <div class="gallery-item video-slot">
+        <div class="gallery-slot">
+          <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/regular-assem.mp4"/></video>
+        </div>
+        <div class="gallery-caption">Regular Class — Assembly</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/ddc-flight.jpeg','DDC 2025 Flight')">
+        <div class="gallery-slot"><img src="images/ddc-flight.jpeg" alt="DDC 2025 Flight" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">DDC 2025 Flight</div>
+      </div>
+
+      <!-- Row 3: photo + photo + photo -->
+      <div class="gallery-item" onclick="openLightbox('images/regular-extra.jpeg','Regular Class UAV')">
+        <div class="gallery-slot"><img src="images/regular-extra.jpeg" alt="Regular Class UAV" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Regular Class UAV</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/award.jpeg','Award Ceremony')">
+        <div class="gallery-slot"><img src="images/award.jpeg" alt="Award Ceremony" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Award Ceremony</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/fmfp.jpeg','FMFP 2025 Conference')">
+        <div class="gallery-slot"><img src="images/fmfp.jpeg" alt="FMFP 2025" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">FMFP 2025 Conference</div>
+      </div>
+
+      <!-- Row 4: vtol video wide + photo -->
+      <div class="gallery-item video-slot">
+        <div class="gallery-slot">
+          <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/vtol-me-flight.mp4"/></video>
+        </div>
+        <div class="gallery-caption">VTOL — Test Flight</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/my-pic.jpeg','Dharmik Jha')">
+        <div class="gallery-slot"><img src="images/my-pic.jpeg" alt="Dharmik Jha" style="width:100%;height:100%;object-fit:cover;"/></div>
+        <div class="gallery-caption">Dharmik Jha</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="tab-panel" id="panel-contact">
+    <h2 class="sec-title">Contact</h2>
+    <div class="contact-wrap fade-in">
+      <div class="contact-heading">Open to Opportunities</div>
+      <p class="contact-sub">Available for internships, research collaborations, and aerospace engineering opportunities. Responses within 24 hours.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:dharmikjha.xd@gmail.com"><span class="link-type">Email</span>dharmikjha.xd@gmail.com</a>
+        <a class="contact-link" href="mailto:23bme016@nirmauni.ac.in"><span class="link-type">Uni Mail</span>23bme016@nirmauni.ac.in</a>
+        <a class="contact-link" href="https://teamarrow.in" target="_blank"><span class="link-type">Team</span>teamarrow.in</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/dharmik-jha" target="_blank">
+          <span class="link-type">LinkedIn</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#0a66c2" style="flex-shrink:0;margin-right:0.4rem;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Dharmik Umeshkumar Jha
+        </a>
+      </div>
+      <div class="refs-block">
+        <div class="refs-title">References</div>
+        <div class="refs-grid">
+          <div><div class="ref-name">Dr. Absar M. Lakdawala</div><div class="ref-detail">Professor, Mechanical Engineering<br/>Nirma University<br/><a href="mailto:absar.lakdawala@nirmauni.ac.in" style="color:inherit;">absar.lakdawala@nirmauni.ac.in</a></div>
+          <div><div class="ref-name">Dr. Rajesh N. Patel</div><div class="ref-detail">Director &amp; Professor<br/>Nirma University<br/><a href="mailto:rajesh.patel@nirmauni.ac.in" style="color:inherit;">rajesh.patel@nirmauni.ac.in</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tabs-container -->
+
+<!-- MODALS OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+<!-- MODALS -->
+<div class="modal" id="modal-vtol">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">SAE Aero Design East 2026 &middot; Advanced Class</div>
+    <div class="modal-title">Hybrid VTOL Tricopter UAV</div>
+    <div class="modal-video"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/adv-flight.mp4"/></video></div>
+    <div class="modal-photos"><div class="modal-photo-slot"><img onclick="openLightbox('images/adv-air.jpeg','')" style="cursor:zoom-in;" src="images/adv-air.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/static.png','')" style="cursor:zoom-in;" src="images/static.png" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/adv-real.jpeg','')" style="cursor:zoom-in;" src="images/adv-real.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">This hybrid VTOL tricopter UAV is being developed for the SAE Aero Design East 2026 Advanced Class competition. The aircraft is designed to take off vertically, transition to fixed-wing cruise flight, and deliver a payload to a designated target area.</p>
+      <p class="modal-desc">The design uses a lifting-body fuselage to generate additional lift during cruise, reducing the aerodynamic penalty of the fuselage and improving overall efficiency. A front-mounted tilting motor configuration provides vertical thrust, with the tilt mechanism validated on the Tricopter Test Platform.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Configuration</td><td>Hybrid VTOL Tricopter</td></tr><tr><td>Wingspan</td><td>~800 mm</td></tr><tr><td>AUW</td><td>~1.6 kg</td></tr><tr><td>Motors</td><td>T-Motor F80 Pro</td></tr><tr><td>Flight Controller</td><td>TBS Lucid H7 Wing</td></tr><tr><td>Airframe</td><td>Balsa / Aeroply composite</td></tr><tr><td>Yaw Control</td><td>Front motor tilt mechanism</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">The lifting-body fuselage cross-section was aerodynamically shaped to generate lift at cruise angles of attack, reducing weight penalty of a conventional box fuselage. FEA validation confirmed a 10% weight reduction from the front-mounted tilt configuration.</p>
+      <p class="modal-desc">The transition sequence — vertical takeoff, forward tilt, fixed-wing cruise, and vertical landing — was modelled in ANSYS and validated through flight testing.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Aerostructures</span><span class="tag">Propulsion Sizing</span><span class="tag">Structural Analysis</span><span class="tag">Composite Structures</span><span class="tag">Assembly</span><span class="tag">Fusion 360</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-quadrotor">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">Aerothon 2025 &middot; UAV Competition</div>
+    <div class="modal-title">Aerothon Quadcopter</div>
+    <div class="modal-photos"><div class="modal-photo-slot"><img onclick="openLightbox('images/aerothon-1.png','')" style="cursor:zoom-in;" src="images/aerothon-1.png" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/aerothon-2.png','')" style="cursor:zoom-in;" src="images/aerothon-2.png" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/aerothon-3.png','')" style="cursor:zoom-in;" src="images/aerothon-3.png" style="width:100%;height:100%;object-fit:cover;"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">Designed and built for the Aerothon 2025 disaster-response UAV challenge. The quadcopter features an X-frame configuration with a generative-design single-piece PET-G frame, reducing part count while optimising load paths.</p>
+      <p class="modal-desc">Propulsion was sized to achieve a thrust-to-weight ratio of ~4.58 using 1300 KV BLDC motors on a 440 mm wheelbase, ensuring stable hover and responsive handling in confined environments.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Frame</td><td>X-frame, 440 mm wheelbase</td></tr><tr><td>Motor</td><td>1300 KV BLDC</td></tr><tr><td>TWR</td><td>~4.58</td></tr><tr><td>Frame Material</td><td>PET-G (generative design)</td></tr><tr><td>Design Tool</td><td>Fusion 360 Generative</td></tr><tr><td>Structural Validation</td><td>ANSYS FEA</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">The airframe was designed using Fusion 360's generative design solver with structural constraints derived from expected flight loads, producing a lightweight single-piece frame that eliminated traditional multi-part assembly.</p>
+      <p class="modal-desc">ANSYS structural analysis verified the frame under maximum thrust and landing impact scenarios before fabrication by 3D printing.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">Generative Design</span><span class="tag">CAD</span><span class="tag">Structural Analysis</span><span class="tag">Load Analysis</span><span class="tag">Propulsion Sizing</span><span class="tag">UAV Integration</span><span class="tag">Additive Manufacturing</span><span class="tag">Fusion 360</span><span class="tag">ANSYS</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-micro">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">SAE Aero Design West 2025 &middot; Micro Class &middot; 11th / 75 Teams</div>
+    <div class="modal-title">Micro Class Fixed-Wing UAV</div>
+    <div class="modal-video"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/micro-flight-comp.mp4"/></video></div>
+    <div class="modal-photos"><div class="modal-photo-slot"><img onclick="openLightbox('images/micro-team.jpeg','')" style="cursor:zoom-in;" src="images/micro-team.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/micro-photo.jpeg','')" style="cursor:zoom-in;" src="images/micro-photo.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/micro-team2.jpeg','')" style="cursor:zoom-in;" src="images/micro-team2.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">A high-wing, semi-monocoque fixed-wing UAV designed for the Micro Class at SAE Aero Design West 2025 in Van Nuys, California. The aircraft carries a 2-litre liquid payload within a strict 450 W power limit, placing 11th overall out of 75 international teams.</p>
+      <p class="modal-desc">A research paper on the aerodynamic performance of this aircraft was presented at FMFP 2025, Nirma University.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Span</td><td>1.312 m</td></tr><tr><td>Configuration</td><td>High-wing, semi-monocoque</td></tr><tr><td>Payload</td><td>2 L liquid</td></tr><tr><td>Power Limit</td><td>450 W</td></tr><tr><td>Competition Result</td><td>11th / 75 teams</td></tr><tr><td>Event</td><td>SAE Aero Design West 2025, Van Nuys CA</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">The wing was designed using XFLR5 for airfoil selection and lift distribution optimisation, balancing payload capacity against the strict power constraint. The semi-monocoque fuselage was fabricated using balsa and composite skin for stiffness-to-weight efficiency.</p>
+      <p class="modal-desc">Component sizing and CG management were iterated through multiple design cycles to meet weight and stability requirements simultaneously.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Aerostructures</span><span class="tag">Structural Analysis</span><span class="tag">Rapid Prototyping</span><span class="tag">Composite Structures</span><span class="tag">Assembly</span><span class="tag">Fusion 360</span><span class="tag">XFLR5</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-regular">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">SAE DDC 2024 &amp; 2025 &middot; Regular Class &middot; 1st Overall 2025</div>
+    <div class="modal-title">Regular Class Fixed-Wing UAV</div>
+    <div class="modal-video"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/FLIGHT-FIRST-DROP.mov"/></video></div>
+    <div class="modal-photos"><div class="modal-photo-slot"><img onclick="openLightbox('images/regular-2.jpeg','')" style="cursor:zoom-in;" src="images/regular-2.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/regular-1.jpeg','')" style="cursor:zoom-in;" src="images/regular-1.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/ddc-team.jpg','')" style="cursor:zoom-in;" src="images/ddc-team.jpg" style="width:100%;height:100%;object-fit:cover;"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">A balsa and aeroply fixed-wing UAV developed across two competition cycles for the SAE DDC Regular Class. In 2025 the aircraft placed 1st Overall across 100+ teams at Karpaga Vinayaga College, Chennai. In 2024 the same platform earned 4th Overall and 2nd Best Design Report at SRM University, Chennai.</p>
+      <p class="modal-desc">The design features a box fuselage with a conventional tail, a high-aspect-ratio wing for efficiency, and an integrated 500 g airdrop mechanism.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Wingspan</td><td>1.68 m</td></tr><tr><td>AUW</td><td>~10 kg gross</td></tr><tr><td>Empty Weight</td><td>~3.6 kg (down from 4.1 kg)</td></tr><tr><td>Motor</td><td>T-Motor AM670 520 KV</td></tr><tr><td>Prop</td><td>16 &times; 10</td></tr><tr><td>Battery</td><td>LiPo 6S 3300 mAh 40C</td></tr><tr><td>Airdrop</td><td>500 g payload</td></tr><tr><td>Airframe</td><td>Aeroply + aluminium spar</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">The 2025 iteration focused on a structured weight-reduction programme: topology optimisation on the fuselage ribs and spar brackets reduced empty weight from 4.1 kg to 3.6 kg — a 12% improvement — without compromising structural margins.</p>
+      <p class="modal-desc">The aluminium main spar was redesigned with CNC-machined clamps and carbon-fibre reinforcement at high-stress wing root stations, validated through three-point bending FEA before fabrication.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Aerostructures</span><span class="tag">Structural Analysis</span><span class="tag">Load Analysis</span><span class="tag">Mechanism Design</span><span class="tag">CNC Machining</span><span class="tag">Composite Structures</span><span class="tag">Assembly</span><span class="tag">ANSYS</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-gear">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">SAE DDC &middot; Structural Component</div>
+    <div class="modal-title">Primary Landing Gear &mdash; 10 kg UAV</div>
+    <div class="modal-photos"><div class="modal-photo-slot" style="flex:unset;width:55%;margin:0 auto;aspect-ratio:3/4;"><img onclick="openLightbox('images/lg.png','')" style="cursor:zoom-in;" src="images/lg.png" style="width:100%;height:100%;object-fit:contain;background:var(--surface2);"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">A lightweight tricycle landing gear assembly designed for the 10 kg gross-weight regular class UAV. The system uses carbon-fibre rods as the primary struts, with CNC-machined aluminium clamps for fuselage attachment.</p>
+      <p class="modal-desc">An expanding spring mechanism absorbs landing impact energy, protecting the airframe from shock loads during hard landings on uneven surfaces.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Configuration</td><td>Tricycle</td></tr><tr><td>Assembly Weight</td><td>~250 g</td></tr><tr><td>Height</td><td>235 mm</td></tr><tr><td>Gross Aircraft Weight</td><td>10 kg</td></tr><tr><td>Main Struts</td><td>Carbon-fibre rods</td></tr><tr><td>Clamps</td><td>CNC-machined aluminium</td></tr><tr><td>Mechanism</td><td>Expanding spring impact absorption</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">Impact load cases were calculated from expected sink-rate and aircraft weight, driving strut sizing and spring selection. ANSYS static structural analysis validated the carbon-fibre strut cross-section under 3g landing loads.</p>
+      <p class="modal-desc">The CNC aluminium clamps were designed with a press-fit interface to the carbon rods, eliminating adhesive joints that had failed in the previous iteration.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Structural Analysis</span><span class="tag">Impact Loads</span><span class="tag">CNC Machining</span><span class="tag">Rapid Prototyping</span><span class="tag">Assembly</span><span class="tag">ANSYS</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-tricopter">
+  <div class="modal-header"><span class="modal-header-label">Project Detail</span><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="modal-body">
+    <div class="modal-event">Internal Test Platform &middot; Mechanism Validation</div>
+    <div class="modal-title">Tricopter UAV Test Platform</div>
+    <div class="modal-video"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><source src="images/tri-flight (1).mp4"/></video></div>
+    <div class="modal-photos"><div class="modal-photo-slot"><img onclick="openLightbox('images/tri-real.jpeg','')" style="cursor:zoom-in;" src="images/tri-real.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/tri-main.png','')" style="cursor:zoom-in;" src="images/tri-main.png" style="width:100%;height:100%;object-fit:cover;"/></div><div class="modal-photo-slot"><img onclick="openLightbox('images/tri-side.png','')" style="cursor:zoom-in;" src="images/tri-side.png" style="width:100%;height:100%;object-fit:cover;"/></div></div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <p class="modal-desc">A compact tricopter UAV built to validate the servo-actuated rear motor tilt mechanism intended for the Hybrid VTOL design. Rapid-fabricated using laser-cut interlocking MDF tab-and-slot joints, the platform allowed iterative flight testing without committing to expensive materials.</p>
+      <p class="modal-desc">The rear motor tilts via a servo-controlled pivot to provide yaw authority, replacing the need for differential thrust or a conventional tail rotor.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Specifications</div>
+      <p class="modal-desc"><table class="specs-table"><tr><td>Wheelbase</td><td>280 mm</td></tr><tr><td>Frame</td><td>Laser-cut MDF, tab-and-slot</td></tr><tr><td>Motors</td><td>iFlight XING 2806.5 1300 KV</td></tr><tr><td>Flight Controller</td><td>Crossflight FC</td></tr><tr><td>Yaw</td><td>Servo-actuated rear motor tilt</td></tr><tr><td>Purpose</td><td>Mechanism validation platform</td></tr></table></p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Design Approach</div>
+      <p class="modal-desc">The tilt mechanism was designed with a brass pivot bushing and direct servo linkage to minimise backlash and maximise angular rate. PID tuning was performed iteratively using Mission Planner telemetry logs.</p>
+      <p class="modal-desc">Lessons from this platform — including preferred tilt range, servo authority requirements, and control loop coupling — directly informed the VTOL tricopter design.</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Tools &amp; Technologies</div>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span><span class="tag">Laser Cutting</span><span class="tag">Assembly</span><span class="tag">Flight Testing</span><span class="tag">PID Tuning</span><span class="tag">Mission Planner</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TABS
+function activateTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  var btn = document.querySelector('[data-tab="' + name + '"]');
+  var panel = document.getElementById('panel-' + name);
+  if(btn) btn.classList.add('active');
+  if(panel) {
+    panel.classList.add('active');
+    panel.querySelectorAll('.fade-in').forEach(function(el, i){
+      el.classList.remove('on');
+      setTimeout(function(){ el.classList.add('on'); }, i * 80);
+    });
+  }
+  var nav = document.querySelector('.tab-nav');
+  if(nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#panel-education .fade-in').forEach(function(el, i){
+    setTimeout(function(){ el.classList.add('on'); }, 300 + i * 100);
+  });
+  var nav = document.querySelector('.tab-nav');
+  var hint = document.getElementById('tabScrollHint');
+  if(nav && hint){
+    nav.addEventListener('scroll', function(){ hint.style.opacity='0'; hint.style.pointerEvents='none'; }, {once:true});
+  }
+});
+
+// MODALS
+function openModal(id) {
+  var overlay = document.getElementById('modalOverlay');
+  var modal = document.getElementById('modal-' + id);
+  if (!overlay || !modal) return;
+  // Reset position before showing
+  modal.style.display = 'block';
+  modal.style.opacity = '0';
+  modal.style.transform = 'translateX(48px)';
+  overlay.style.display = 'block';
+  modal.scrollTop = 0;
+  // Force reflow so transition fires
+  void modal.offsetWidth;
+  overlay.classList.add('open');
+  modal.classList.add('open');
+  modal.style.opacity = '';
+  modal.style.transform = '';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  var overlay = document.getElementById('modalOverlay');
+  overlay.classList.remove('open');
+  document.querySelectorAll('.modal').forEach(function(m) { m.classList.remove('open'); });
+  document.body.style.overflow = '';
+  setTimeout(function() {
+    overlay.style.display = '';
+    document.querySelectorAll('.modal').forEach(function(m) { m.style.display = ''; });
+  }, 380);
+}
+
+// LIGHTBOX
+function openLightbox(src, caption) {
+  var overlay = document.getElementById('lightboxOverlay');
+  var content = document.getElementById('lightboxContent');
+  var img = document.getElementById('lightboxImg');
+  var cap = document.getElementById('lightboxCaption');
+  img.src = src;
+  img.style.opacity = '0';
+  cap.textContent = caption || '';
+  overlay.style.display = 'block';
+  content.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ img.style.opacity = '1'; }, 30);
+}
+function closeLightbox() {
+  document.getElementById('lightboxOverlay').style.display = 'none';
+  document.getElementById('lightboxContent').style.display = 'none';
+  document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') { closeLightbox(); closeModal(); }
+});
+
+
+// THEME TOGGLE
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  var isDark = theme === 'dark';
+  document.getElementById('themeIcon').textContent = isDark ? '☽' : '☀';
+  document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+}
+function getTimeTheme() {
+  var h = new Date().getHours();
+  return (h >= 6 && h < 19) ? 'light' : 'dark';
+}
+function toggleTheme() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  sessionStorage.setItem('themeOverride', next);
+}
+(function(){
+  var override = sessionStorage.getItem('themeOverride');
+  applyTheme(override || getTimeTheme());
+  setInterval(function(){
+    if(!sessionStorage.getItem('themeOverride')) applyTheme(getTimeTheme());
+  }, 300000);
+})();
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightboxOverlay" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;"></div>
+<div id="lightboxContent" style="display:none;position:fixed;inset:0;z-index:901;pointer-events:none;display:none;align-items:center;justify-content:center;">
+  <img id="lightboxImg" src="" style="max-width:90vw;max-height:88vh;object-fit:contain;pointer-events:all;box-shadow:0 8px 48px rgba(0,0,0,0.7);border-radius:2px;opacity:0;transition:opacity 0.2s ease;"/>
+  <div id="lightboxCaption" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:#fff;font-size:0.8rem;letter-spacing:0.06em;opacity:0.7;pointer-events:none;"></div>
+  <button onclick="closeLightbox()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;width:32px;height:32px;font-size:1.1rem;cursor:pointer;border-radius:2px;pointer-events:all;">×</button>
+</div>
+</body>
+</html>
